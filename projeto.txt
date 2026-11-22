@@ -1,0 +1,7 @@
+TRIPLO C MOTORBIKE WORLD
+Versao: 0.1
+Plataforma: Android
+Estilo: Mundo aberto 3D
+Camera: Terceira pessoa
+Veiculo: Motociclo
+Controlos: Toque no ecra

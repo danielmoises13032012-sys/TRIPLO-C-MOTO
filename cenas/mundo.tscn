@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://cenas/moto.tscn" id="1"]
+[ext_resource type="Script" path="res://scripts/estrada.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="3"]
+[ext_resource type="PackedScene" path="res://cenas/controlos.tscn" id="4"]
+
+[sub_resource type="BoxMesh" id="EstradaMesh"]
+size = Vector3(8, 0.2, 100)
+
+[node name="Mundo" type="Node3D"]
+
+[node name="Estrada" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.1, 0)
+mesh = SubResource("EstradaMesh")
+
+[node name="LinhasEstrada" type="Node3D" parent="."]
+script = ExtResource("2")
+
+[node name="Moto" parent="." instance=ExtResource("1")]
+position = Vector3(0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+position = Vector3(0, 5, 9)
+rotation_degrees = Vector3(-20, 0, 0)
+current = true
+script = ExtResource("3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-45, 0, 0)
+
+[node name="Controlos" parent="." instance=ExtResource("4")]
