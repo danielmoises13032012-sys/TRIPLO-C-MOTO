@@ -19,13 +19,12 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Preparar Android SDK
-        uses: android-actions/setup-android@v3
-        with:
-          accept-android-sdk-licenses: true
-          log-accepted-android-sdk-licenses: false
+        run: |
+          echo "$ANDROID_HOME/cmdline-tools/latest/bin" >> "$GITHUB_PATH"
 
       - name: Instalar ferramentas
         run: |
+          yes | sdkmanager --licenses
           sdkmanager --install "platform-tools" "build-tools;35.0.1" "platforms;android-35" "ndk;28.1.13356709"
 
       - name: Exportar APK
@@ -44,4 +43,4 @@ jobs:
           name: TRIPLO-C-MOTORBIKE-WORLD-APK
           path: build/*.apk
           if-no-files-found: error
-          
+
